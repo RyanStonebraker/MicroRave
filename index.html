@@ -8,6 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+        <script src="js/microwave-controls.js" charset="utf-8"></script>
     </head>
     <body>
         <header>
@@ -21,8 +22,8 @@
                 </figure>
                 <section class="controls">
                     <form action="#" method="post">
-                        <a class="modtime add" href="#">+</a>
-                        <a class="modtime subtract" href="#">&minus;</a>
+                        <a class="modtime add">+</a>
+                        <a class="modtime subtract">&minus;</a>
                         <input type="text" name="time" value="0:00">
                         <!-- Song Select -->
                         <input type="submit" name="cook" value="Cook">
@@ -32,7 +33,7 @@
             <table class="queue">
                 <tbody class="header">
                     <tr>
-                        <th>Time</th>
+                        <th>Cooking Time</th>
                         <th>Song</th>
                     </tr>
                 </tbody>
@@ -53,7 +54,7 @@
             </table>
         </main>
         <footer>
-            &copy; 2018 MicroRave, LLC
+            2018 &copy; MicroRave, LLC
         </footer>
     </body>
 </html>

@@ -57,6 +57,7 @@ main section.microwave section.controls form a.modtime {
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 main section.microwave section.controls form a.modtime:hover {
   background-color: #cecfd4;
@@ -79,6 +80,7 @@ main section.microwave section.controls form input[type="submit"] {
   background-color: whitesmoke;
   border-radius: 15px;
   transition: all 0.2s ease;
+  outline: none;
 }
 main section.microwave section.controls form input[type="submit"]:hover {
   background-color: #cecfd4;
