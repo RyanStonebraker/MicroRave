@@ -6,8 +6,14 @@
         <link rel="stylesheet" href="css/master.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
     </head>
     <body>
+        <header>
+            <h1>MicroRave</h1>
+            <h4>The world's first IOT, Blockchain Microwave.</h4>
+        </header>
         <main>
             <section class="microwave">
                 <figure>
@@ -19,22 +25,28 @@
                     <!-- Song Select -->
                 </section>
             </section>
-            <section class="queue">
-                <ul>
-                    <li>
-                        <time>3:30</time>
-                        <p>Smooth Jazz</p>
-                    </li>
-                    <li>
-                        <time>3:30</time>
-                        <p>Smoother Jazz</p>
-                    </li>
-                    <li>
-                        <time>1:05</time>
-                        <p>Smoothest Jazz</p>
-                    </li>
-                </ul>
-            </section>
+            <table class="queue">
+                <tbody class="header">
+                    <tr>
+                        <th>Time</th>
+                        <th>Song</th>
+                    </tr>
+                </tbody>
+                <tbody class="body">
+                    <tr>
+                        <td>3:30</td>
+                        <td>Smooth Jazz</td>
+                    </tr>
+                    <tr>
+                        <td>3:30</td>
+                        <td>Smoother Jazz</td>
+                    </tr>
+                    <tr>
+                        <td>1:05</td>
+                        <td>Smoothest Jazz</td>
+                    </tr>
+                </tbody>
+            </table>
         </main>
         <footer>
             &copy; 2018 MicroRave, LLC

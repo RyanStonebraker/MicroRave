@@ -1,6 +1,25 @@
+@import "variables.less";
+
 html, body {
     margin: 0;
     padding: 0;
+    font-family: @body-font;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1, h4 {
+        margin: 0;
+    }
+
+    h1 {
+        padding: 10px;
+        font-family: @header-font;
+        font-size: 50px;
+    }
 }
 
 main {
@@ -13,28 +32,73 @@ main {
         flex-direction: column;
         width: 50%;
         figure {
+            margin: 0;
+
             img {
                 max-width: 100%;
             }
         }
-    }
-
-    section.queue {
-        display: flex;
-        justify-content: center;
-        flex: 1;
-        ul {
-            list-style: none;
+        section.controls {
             display: flex;
             justify-content: center;
-            flex-direction: column;
 
-            li {
+            a {
+                text-decoration: none;
+                color: black;
+                padding: 15px;
+                background-color: @button-color-light;
+                border-radius: 15px;
+                transition: all 0.2s ease;
+            }
+            a:hover {
+                background-color: @button-color-dark;
+                transition: all 0.2s ease;
+            }
+        }
+    }
+
+    table.queue {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        tbody.header {
+            width: 90%;
+
+            tr {
                 display: flex;
+                justify-content: center;
 
-                p {
-                    margin: 0;
+                th {
+                    display: flex;
+                    justify-content: center;
+                    flex: 1;
                 }
+            }
+        }
+
+        tbody.body {
+            width: 90%;
+            max-height: 300px;
+            overflow-y: scroll;
+
+            tr {
+                display: flex;
+                justify-content: center;
+
+                th,td {
+                    display: flex;
+                    justify-content: center;
+                    flex: 1;
+                }
+            }
+            tr:nth-child(even) {
+                background-color: @button-color-light;
+            }
+            tr:hover {
+                background-color: @button-color-dark;
+                cursor: pointer;
             }
         }
     }

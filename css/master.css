@@ -2,6 +2,21 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Open Sans";
+}
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header h1,
+header h4 {
+  margin: 0;
+}
+header h1 {
+  padding: 10px;
+  font-family: "Black Han Sans";
+  font-size: 50px;
 }
 main {
   display: flex;
@@ -13,25 +28,67 @@ main section.microwave {
   flex-direction: column;
   width: 50%;
 }
+main section.microwave figure {
+  margin: 0;
+}
 main section.microwave figure img {
   max-width: 100%;
 }
-main section.queue {
+main section.microwave section.controls {
   display: flex;
   justify-content: center;
-  flex: 1;
 }
-main section.queue ul {
-  list-style: none;
+main section.microwave section.controls a {
+  text-decoration: none;
+  color: black;
+  padding: 15px;
+  background-color: whitesmoke;
+  border-radius: 15px;
+  transition: all 0.2s ease;
+}
+main section.microwave section.controls a:hover {
+  background-color: #cecfd4;
+  transition: all 0.2s ease;
+}
+main table.queue {
+  flex: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-main section.queue ul li {
-  display: flex;
+main table.queue tbody.header {
+  width: 90%;
 }
-main section.queue ul li p {
-  margin: 0;
+main table.queue tbody.header tr {
+  display: flex;
+  justify-content: center;
+}
+main table.queue tbody.header tr th {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+main table.queue tbody.body {
+  width: 90%;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+main table.queue tbody.body tr {
+  display: flex;
+  justify-content: center;
+}
+main table.queue tbody.body tr th,
+main table.queue tbody.body tr td {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+main table.queue tbody.body tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+main table.queue tbody.body tr:hover {
+  background-color: #cecfd4;
+  cursor: pointer;
 }
 footer {
   display: flex;
