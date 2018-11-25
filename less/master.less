@@ -42,17 +42,55 @@ main {
             display: flex;
             justify-content: center;
 
-            a {
-                text-decoration: none;
-                color: black;
-                padding: 15px;
-                background-color: @button-color-light;
-                border-radius: 15px;
-                transition: all 0.2s ease;
-            }
-            a:hover {
-                background-color: @button-color-dark;
-                transition: all 0.2s ease;
+            form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+
+                a.modtime {
+                    text-decoration: none;
+                    color: black;
+                    font-size: 25px;
+                    background-color: @button-color-light;
+                    width: 25px;
+                    height: 25px;
+                    border: 1px solid @button-color-dark;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all 0.2s ease;
+                }
+                a.modtime:hover {
+                    background-color: @button-color-dark;
+                }
+
+                input[name="time"] {
+                    margin-left: 5px;
+                    width: 50px;
+                    min-height: 25px;
+                    text-align: center;
+                    outline: none;
+                    border: none;
+                    border: 1px solid lightgrey;
+                    border-radius: 5px;
+                }
+
+                input[type="submit"] {
+                    margin: 0 15px;
+                    text-decoration: none;
+                    color: black;
+                    padding: 15px;
+                    background-color: @button-color-light;
+                    border-radius: 15px;
+                    transition: all 0.2s ease;
+                }
+                input[type="submit"]:hover {
+                    background-color: @button-color-dark;
+                    transition: all 0.2s ease;
+                    cursor: pointer;
+                }
             }
         }
     }
@@ -73,6 +111,8 @@ main {
                 th {
                     display: flex;
                     justify-content: center;
+                    align-items: center;
+                    text-align: center;
                     flex: 1;
                 }
             }
@@ -90,6 +130,8 @@ main {
                 th,td {
                     display: flex;
                     justify-content: center;
+                    align-items: center;
+                    text-align: center;
                     flex: 1;
                 }
             }
