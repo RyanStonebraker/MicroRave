@@ -1,3 +1,7 @@
+input.error {
+  background-color: red;
+  font-weight: bold;
+}
 html,
 body {
   margin: 0;
@@ -71,6 +75,11 @@ main section.microwave section.controls form input[name="time"] {
   border: none;
   border: 1px solid lightgrey;
   border-radius: 5px;
+}
+main section.microwave section.controls form select {
+  height: 30px;
+  outline: none;
+  margin-left: 15px;
 }
 main section.microwave section.controls form input[type="submit"] {
   margin: 0 15px;

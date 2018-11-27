@@ -24,8 +24,12 @@
                     <form action="#" method="post">
                         <a class="modtime add">+</a>
                         <a class="modtime subtract">&minus;</a>
-                        <input type="text" name="time" value="0:00">
-                        <!-- Song Select -->
+                        <input type="text" name="time" value="00:00">
+                        <select name="song">
+                          <option value="song1">song1</option>
+                          <option value="song2">song2</option>
+                          <option value="song3">song3</option>
+                        </select>
                         <input type="submit" name="cook" value="Cook">
                     </form>
                 </section>
@@ -51,6 +55,7 @@
                         <td>Smoothest Jazz</td>
                     </tr>
                 </tbody>
+                <!-- TODO: Add song option, load from folder  -->
             </table>
         </main>
         <footer>
