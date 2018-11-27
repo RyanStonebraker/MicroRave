@@ -21,9 +21,10 @@
                     <img src="img/microwave.png">
                 </figure>
                 <section class="controls">
-                    <form action="#" method="post">
-                        <a class="modtime add">+</a>
-                        <a class="modtime subtract">&minus;</a>
+                    <iframe width="0" height="0" border="0" name="nullframe" id="nullframe"></iframe>
+                    <form action="http://localhost:5000/post" target="nullframe" method="post">
+                        <a class="modtime add unselectable">+</a>
+                        <a class="modtime subtract unselectable">&minus;</a>
                         <input type="text" name="time" value="00:00">
                         <select name="song">
                           <option value="song1">song1</option>

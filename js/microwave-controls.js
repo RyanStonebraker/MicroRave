@@ -64,4 +64,6 @@ $(document).ready(function () {
       cookingTime.seconds -= timeChange;
     setCookingTime(cookingTime.minutes, cookingTime.seconds);
   });
+
+  
 });
