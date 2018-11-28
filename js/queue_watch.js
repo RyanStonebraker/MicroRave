@@ -1,20 +1,36 @@
-function createTableEntry (executed=false, ...commands) {
-  let entry = "<tr" + (executed ? " class='executed'>" : ">");
-  commands.forEach(function (command) {
-    entry += "<td>";
-    entry += command;
+function createTableEntry (command) {
+  let uuid = command.uuid;
+  let executed = command.executed;
+  delete command.uuid;
+  delete command.executed;
+
+  let entry = "<tr id='" + uuid + "'" + (executed ? " class='executed'>" : ">");
+  Object.keys(command).forEach(function (key) {
+    let info = command[key];
+    entry += "<td class='" + key + "'>";
+    entry += info;
     entry += "</td>";
   });
   entry += "</tr>";
-  console.log(entry);
   return entry;
 }
 
-function updateTime () {
+function updateTableEntry (command) {
+  let uuid = command.uuid;
+  let executed = command.executed;
+  delete command.uuid;
+  delete command.executed;
 
+  Object.keys(command).forEach(function (key) {
+    let currentInfo = $("#" + uuid + " td." + key);
+    if (currentInfo != command[key])
+      $("#" + uuid + " td." + key).text(command[key]);
+  });
 }
 
+var aliveUUIDs = 0;
 function watchAPI () {
+  let currentAliveUUIds = 0;
   $.ajax({
       type: 'GET',
       url: '/api/api.txt',
@@ -23,23 +39,31 @@ function watchAPI () {
           return;
         let microwaveQueue = JSON.parse(data);
         let commandRunning = false;
-        $('table.queue tbody.body').html("");
         microwaveQueue.forEach(function (command) {
           if(command.executed) {
             $("section.microwave figure img.raveMode").addClass("rave");
             commandRunning = true;
           }
-          $('table.queue tbody.body').append(
-            createTableEntry(command.executed, command.time, command.song)
-          );
+          if ($('#' + command.uuid).length) {
+            updateTableEntry(command);
+            ++currentAliveUUIds;
+          }
+          else
+            $('table.queue tbody.body').append(createTableEntry(command));
         });
         if (!commandRunning)
           $("section.microwave figure img.raveMode").removeClass("rave");
+        if (currentAliveUUIds < aliveUUIDs) {
+          $('table.queue tbody.body').html("");
+          watchAPI();
+        }
+        aliveUUIDs = currentAliveUUIds;
       }
   });
   setTimeout(watchAPI, 1000);
 }
 
 $(document).ready(function () {
+  $('table.queue tbody.body').html("");
   watchAPI();
 });

@@ -1,16 +1,7 @@
-# let timeFrags = command.time.split(":");
-# let newTimeSeconds = parseInt(timeFrags[0]) * 60 + parseInt(timeFrags[1]) - 1;
-# let minutes = Math.floor(newTimeSeconds/60);
-# let seconds = newTimeSeconds % 60;
-# if (minutes < 10)
-#   minutes = "0" + minutes;
-# if (seconds < 10)
-#   seconds = "0" + seconds;
-# command.time = minutes + ":" + seconds;
-
 import requests
 import time
 import math
+from pygame import mixer
 
 cookingQueue = []
 rootURL = "http://localhost:5000"
@@ -44,8 +35,11 @@ def updateAPIItem(index):
     return True
 
 if __name__ == "__main__":
+    mixer.init()
     while(True):
         cookingQueue = requests.get(rootURL).json()
         if updateAPIItem(0):
+            mixer.music.load("../songs/sandstorm.mp3")
+            mixer.music.play()
             print(cookingQueue)
         time.sleep(1)
