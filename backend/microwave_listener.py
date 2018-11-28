@@ -2,17 +2,22 @@ import requests
 import time
 import math
 from pygame import mixer
+import signal
+import sys
 
 cookingQueue = []
 rootURL = "http://localhost:5000"
 
-def subTimeStamp(timestamp):
+def timeStampToSeconds(timestamp):
     timeFrags = timestamp.split(":")
-    newTimeSeconds = int(timeFrags[0]) * 60 + int(timeFrags[1]) - 1
-    if newTimeSeconds <= 0:
+    return int(timeFrags[0]) * 60 + int(timeFrags[1]) - 1
+
+def subTimeStamp(timestamp):
+    totalSeconds = timeStampToSeconds(timestamp)
+    if totalSeconds <= 0:
         return False
-    minutes = math.floor(newTimeSeconds/60)
-    seconds = newTimeSeconds % 60
+    minutes = math.floor(totalSeconds/60)
+    seconds = totalSeconds % 60
     if minutes < 10:
         minutes = "0" + str(minutes)
     if seconds < 10:
@@ -32,14 +37,26 @@ def updateAPIItem(index):
     if not updatedTimeStamp:
         updatePacket["remove"] = True
     requests.post(url = rootURL + "/update", data = updatePacket)
-    return True
+    return updatePacket
+
+def killHandler(signal, frame):
+    mixer.quit()
+    sys.exit(0)
 
 if __name__ == "__main__":
+    signal.signal(signal.SIGINT, killHandler)
     mixer.init()
+    currentlyPlaying = ""
     while(True):
         cookingQueue = requests.get(rootURL).json()
-        if updateAPIItem(0):
-            mixer.music.load("../songs/sandstorm.mp3")
-            mixer.music.play()
-            print(cookingQueue)
+        updated = updateAPIItem(0)
+        if updated:
+            if currentlyPlaying != cookingQueue[0]["song"]:
+                currentlyPlaying = cookingQueue[0]["song"]
+                mixer.music.load("../songs/" + cookingQueue[0]["song"] + ".mp3")
+                mixer.music.play()
+                print("Starting")
+            if "remove" in updated:
+                print("Stopping")
+                mixer.music.stop()
         time.sleep(1)
