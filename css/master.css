@@ -9,6 +9,9 @@ input.error {
   -ms-user-select: none;
   user-select: none;
 }
+tr.executed {
+  background-color: lightblue;
+}
 html,
 body {
   margin: 0;
@@ -41,6 +44,22 @@ main section.microwave {
 }
 main section.microwave figure {
   margin: 0;
+  position: relative;
+}
+main section.microwave figure img.raveMode {
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  height: 0;
+}
+main section.microwave figure img.raveMode.rave {
+  position: absolute;
+  width: 47.5%;
+  top: 31%;
+  left: 16%;
+  border-radius: 2px;
+  height: 41%;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 main section.microwave figure img {
   max-width: 100%;
