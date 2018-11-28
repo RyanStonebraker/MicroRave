@@ -43,7 +43,7 @@ router.post('/post', function (request, response) {
     "time": postData["time"],
     "song": postData["song"],
     "executed": false,
-    "uuid": generateUUID()
+    "uuid": generateUUID(Math.floor(Math.random() * 100))
   };
 
   cookingQueue.push(cookingData);
