@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var fs = require('fs');
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -34,6 +35,12 @@ router.post('/post', function (request, response) {
 
   cookingQueue.push(cookingData);
   response.send(cookingQueue);
+
+
+  fs.writeFile("api.txt", JSON.stringify(cookingQueue), function(err) {
+    if(err)
+        return console.log(err);
+  });
 });
 
 app.use('/', router);
