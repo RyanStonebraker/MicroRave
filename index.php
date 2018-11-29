@@ -13,7 +13,7 @@
     </head>
     <body>
         <header>
-            <h1>MicroRave</h1>
+            <h1><img src="img/rave_logo.png"></h1>
             <h4>The world's first IOT, Blockchain Microwave.</h4>
         </header>
         <main>
@@ -29,29 +29,40 @@
                         <a class="modtime subtract unselectable">&minus;</a>
                         <input type="text" name="time" value="00:00">
                         <select name="song">
-                          <option value="sandstorm">Darude - Sandstorm</option>
-                          <option value="song2">song2</option>
-                          <option value="song3">song3</option>
+                          <?php
+                            $songs = scandir("songs");
+                            foreach($songs as $song) {
+                              if ($song[0] != ".") {
+                                $song_name = substr($song, 0, -4);
+                                echo "<option value='${song}'>${song_name}</option>";
+                              }
+                            }
+                          ?>
                         </select>
                         <input type="submit" name="cook" value="Cook">
                     </form>
                 </section>
             </section>
-            <table class="queue">
-                <tbody class="header">
-                    <tr>
-                        <th>Cooking Time</th>
-                        <th>Song</th>
-                    </tr>
-                </tbody>
-                <tbody class="body">
-                    <tr>
-                        <td>---</td>
-                        <td>---</td>
-                    </tr>
-                </tbody>
-                <!-- TODO: Add song option, load from folder  -->
-            </table>
+            <section class="right-side">
+              <table class="queue">
+                  <tbody class="header">
+                      <tr>
+                          <th>Cooking Time</th>
+                          <th>Song</th>
+                      </tr>
+                  </tbody>
+                  <tbody class="body">
+                      <tr>
+                          <td>---</td>
+                          <td>---</td>
+                      </tr>
+                  </tbody>
+              </table>
+              <form id="uploader" action="uploadSong.php" method="post" enctype="multipart/form-data">
+                  <input type="file" name="songFile" id="songFile">
+                  <input type="submit" value="Upload Song" name="submit">
+              </form>
+            </section>
         </main>
         <footer>
             2018 &copy; MicroRave, LLC

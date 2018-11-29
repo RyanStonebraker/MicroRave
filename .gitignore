@@ -2,3 +2,6 @@ node_modules
 .atom-live-server.json
 songs
 *.mp3
+config
+Dockerfile
+start.sh

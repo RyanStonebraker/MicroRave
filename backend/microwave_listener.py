@@ -53,9 +53,11 @@ if __name__ == "__main__":
         if updated:
             if currentlyPlaying != cookingQueue[0]["song"]:
                 currentlyPlaying = cookingQueue[0]["song"]
-                mixer.music.load("../songs/" + cookingQueue[0]["song"] + ".mp3")
-                mixer.music.play()
+                mixer.music.load("../songs/{0}".format(cookingQueue[0]["song"]))
+                mixer.music.play(-1)
+                print("Playing {0}".format(cookingQueue[0]["song"]))
             if "remove" in updated:
                 currentlyPlaying = ""
                 mixer.music.stop()
+                print("Stopping {0}".format(cookingQueue[0]["song"]))
         time.sleep(1)

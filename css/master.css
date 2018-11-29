@@ -122,13 +122,16 @@ main section.microwave section.controls form input[type="submit"]:hover {
   transition: all 0.2s ease;
   cursor: pointer;
 }
+main section.right-side {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 main table.queue {
   flex: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-main table.queue tbody.header {
   width: 90%;
 }
 main table.queue tbody.header tr {
@@ -143,7 +146,6 @@ main table.queue tbody.header tr th {
   flex: 1;
 }
 main table.queue tbody.body {
-  width: 90%;
   max-height: 300px;
   overflow-y: scroll;
 }
@@ -165,6 +167,13 @@ main table.queue tbody.body tr:nth-child(even) {
 main table.queue tbody.body tr:hover {
   background-color: #cecfd4;
   cursor: pointer;
+}
+main form#uploader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  min-height: 45px;
 }
 footer {
   display: flex;

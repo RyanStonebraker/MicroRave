@@ -60,7 +60,7 @@ function watchAPI () {
         aliveUUIDs = currentAliveUUIds;
       }
   });
-  setTimeout(watchAPI, 10);
+  setTimeout(watchAPI, 200);
 }
 
 $(document).ready(function () {
